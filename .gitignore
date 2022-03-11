@@ -14,3 +14,4 @@ docs
 
 # dfx temporary files
 .dfx/
+dfx.json
