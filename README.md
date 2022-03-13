@@ -11,7 +11,7 @@ Event log storage and analysis service on the Internet Computer
 To start using the ICES Motoko Library to integrate ICES into your Motoko-based Canister, visit our documentation or the examples folder in this repository.
 
 - [ICES Motoko Library Documentation](https://doc.ices.one/)
-- [ICES Motoko Library Examples](https://github.com/icpfans-xyz/ices-motoko-library)
+- [ICES Motoko Library Examples](https://github.com/icpfans-xyz/ices/tree/main/example/motoko)
 
 
 ## Requirements
@@ -65,27 +65,33 @@ Here's a quick breakdown, but use the original documentation for latest details:
 
 After you have initialised [Vessel](https://github.com/dfinity/vessel), edit the `package-set.dhall` and include the [ICES Motoko library](https://github.com/icpfans-xyz/ices-motoko-library) and the version, as available in the releases of [ICES Motoko Library](https://github.com/icpfans-xyz/ices-motoko-library).
 
-In the example below of our `package-set.dhall`, we are using `v1.0.0`:
+In the example below of our `package-set.dhall`, we are using `v0.1.0`:
 
 ```sh
-let upstream = https://github.com/dfinity/vessel-package-set/releases/download/mo-0.6.7-20210818/package-set.dhall sha256:c4bd3b9ffaf6b48d21841545306d9f69b57e79ce3b1ac5e1f63b068ca4f89957
 let Package =
     { name : Text, version : Text, repo : Text, dependencies : List Text }
 
 let
   additions =
-      [{ name = "ICES-motoko-library"
-      , repo = "https://github.com/icpfans-xyz/ices-motoko-library"
-      , version = "v1.0.0"
-      , dependencies = [] : List Text
-      }] : List Package
+      [
+            { dependencies = [] : List Text
+            , name = "base"
+            , repo = "https://github.com/dfinity/motoko-base.git"
+            , version = "494824a2787aee24ab4a5888aa519deb05ecfd60"
+            },
+            { name = "ices"
+            , repo = "https://github.com/icpfans-xyz/ices-motoko-library"
+            , version = "v0.1.0"
+            , dependencies = [] : List Text
+            }
+      ] : List Package
 
-in  upstream # additions
+in  additions
 ```
 Make sure you also add the library as a dependency to your `vessel.dhall` file like this:
 ```sh
 {
-  dependencies = [ "base", "ICES-motoko-library" ],
+  dependencies = [ "base", "ices" ],
   compiler = Some "0.6.2"
 }
 ```
@@ -96,7 +102,7 @@ Here's a breakdown of a project initialised by the [dfx cli](https://smartcontra
 1) Create a new Motoko project called `ICES-motoko-example` (it's a random name that we selected for our example, you can name it whatever you want)
 
   ```sh
-  dfx new ICES-motoko-example
+  dfx new ices-motoko-example
   ```
 
 2) Initialise Vessel
@@ -112,8 +118,8 @@ Here's a breakdown of a project initialised by the [dfx cli](https://smartcontra
   ```sh
   {
     "canisters": {
-      "ICES-motoko-example": {
-        "main": "src/ICES-motoko-example/main.mo",
+      "ices-motoko-example": {
+        "main": "src/ices-motoko-example/main.mo",
         "type": "motoko"
       }
     },
