@@ -17,8 +17,8 @@ module {
         let router: Router.Self = actor(routerId);
         // to call ICES main
         // Register the current Canister to ICES Main (Router) Canister
-        public func register(projectId: Text) : async Result.Result<Text, Text> {
-            let result = await router.register(projectId);
+        public func register() : async Result.Result<Text, Text> {
+            let result = await router.register();
             switch result {
                 case(#ok(msg)) Debug.print("Register success :" # msg);
                 case(#err(errmsg)) Debug.print("Register fail: " # errmsg);
