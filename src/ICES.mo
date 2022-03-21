@@ -3,7 +3,7 @@ import Result "mo:base/Result";
 import Option "mo:base/Option";
 
 import Router "Router";
-import Type "Types";
+
 
 module {
 
@@ -13,7 +13,7 @@ module {
         // instance ICES
         let routerId = Option.get(overrideId, Router.mainnetId);
 
-        type Event = Type.Event;
+        type Event = Router.Event;
 
         Debug.print("sdk  routerId :" # routerId);
 
