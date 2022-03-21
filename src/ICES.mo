@@ -3,6 +3,7 @@ import Result "mo:base/Result";
 import Option "mo:base/Option";
 
 import Router "Router";
+import Type "Types";
 
 module {
 
@@ -11,6 +12,8 @@ module {
     ) {
         // instance ICES
         let routerId = Option.get(overrideId, Router.mainnetId);
+
+        type Event = Type.Event;
 
         Debug.print("sdk  routerId :" # routerId);
 
@@ -27,19 +30,8 @@ module {
         };
 
 
-        public func login(eventValue: [Text]) : async Result.Result<Nat, Text> {
-            let eventKey = "ICES_USER";
-            // let eventValue = [param1, param2];
-            let result = await router.emit(eventKey, eventValue);
-            switch result {
-                case(#ok(index)) Debug.print("emit success");
-                case(#err(errmsg)) Debug.print("emit fail: " # errmsg);
-            };
-            result;
-        };
-
-        public func emit(eventKey: Text, eventValue: [Text]) : async Result.Result<Nat, Text> {
-            let result = await router.emit(eventKey, eventValue);
+        public func emit(event : Event) : async Result.Result<Nat, Text> {
+            let result = await router.emit(event);
             switch result {
                 case(#ok(index)) Debug.print("emit success");
                 case(#err(errmsg)) Debug.print("emit fail: " # errmsg);
