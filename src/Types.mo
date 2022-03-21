@@ -3,10 +3,10 @@ import Principal "mo:base/Principal";
 import Time "mo:base/Time";
 module {
 
-    public type Transfer = {
-        from : Principal;
-        to: Principal;
-        amount: Nat64;
+    public type Transaction = {
+        from : Text;
+        to: Text;
+        amount: Nat;
     };
 
     public type EventValue = {
@@ -19,7 +19,7 @@ module {
         #False;
         #Float : Float;
         #Principal : Principal;
-        #Transfer : Transfer;
+        #Transaction : Transaction;
     };
 
     public type Indexed = {
