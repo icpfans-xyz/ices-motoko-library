@@ -2,7 +2,7 @@ import Result "mo:base/Result";
 import Time "mo:base/Time";
 module {
 
-    public let mainnetId = "lj532-6iaaa-aaaah-qcc7a-cai";
+    public let mainnetId = "ydetr-mqaaa-aaaah-aa6lq-cai";
 
     public type Transaction = {
         from : Text;
