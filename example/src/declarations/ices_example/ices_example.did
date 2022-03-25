@@ -1,0 +1,5 @@
+service : {
+  emitEvent: (text, text, text) -> (bool);
+  register: () -> (bool);
+  transfer: (principal, principal, nat) -> (bool);
+}
