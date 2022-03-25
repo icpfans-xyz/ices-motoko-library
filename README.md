@@ -6,12 +6,21 @@ Event log storage and analysis service on the Internet Computer
 
 > ICES (Internet Computer Event System) is a canister custom event log storage and analysis service on Dfinity. It mainly solves the problem that canister's interaction records cannot be publicly queried. Any canister can access ICES without permission, store the interactive data permanently, and query it through the public API and dashboard provided by ICES.
 
+## IC Mainnet demo
+* Demo https://opxi6-diaaa-aaaah-abhrq-cai.raw.ic0.app
+* Explorer [https://explorer.ices.one](https://explorer.ices.one)
+
+
 ## Guides and Documentation
 
 To start using the ICES Motoko Library to integrate ICES into your Motoko-based Canister, visit our documentation or the examples folder in this repository.
 
 - [ICES Motoko Library Documentation](https://doc.ices.one/)
 - [ICES Motoko Library Examples](https://github.com/icpfans-xyz/ices/tree/main/example/motoko)
+
+# IC Mainnet demo
+* Demo https://opxi6-diaaa-aaaah-abhrq-cai.raw.ic0.app
+* Explorer [https://explorer.ices.one](https://explorer.ices.one)
 
 
 ## Requirements
